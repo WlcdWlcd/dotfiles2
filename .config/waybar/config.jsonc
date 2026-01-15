@@ -1,0 +1,197 @@
+{
+    "layer": "top",
+    "modules-left": ["custom/logo",
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "hyprland/window",
+        "battery#dualsense"],
+    "modules-center": ["clock"],
+    //"modules-right": ["mpris","cpu","memory","hyprland/language","tray","battery"],
+    "modules-right": [
+        "custom/wallpaper",
+        "custom/theme",
+        //"custom/keyclicks",
+        "custom/noscreenshare",
+        "mpris",
+        "hyprland/language",
+        "network",
+        "pulseaudio",
+        "tray",
+        "custom/swaync",
+        "group/hardware",
+        "group/power"],
+    "height": 32,
+
+    "hyprland/window": {
+        "max-length": 25
+    },
+    "battery": {
+        "format": "{capacity}% {icon} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+  "battery#dualsense": {
+      "bat": "ps-controller-battery-d0:bc:c1:9f:f6:8c",
+        "hide-if-unavailable": true,
+    "format": "🎮 {capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true
+  },
+
+
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    
+    "custom/logo": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "wofi &"
+    },
+
+    "hyprland/workspaces":{
+        //"workspace-taskbar":{
+        //    "enable":true,
+        //    "format": "{icon} {title:.22}",
+        //    "update-active-window": true
+        //}
+            "on-click": "activate",
+                "format": "{icon}",
+                "format-icons": {
+                    "default": "",
+                    "1": "1",
+                    "2": "2",
+                    "3": "3",
+                    "4": "4",
+                    "5": "5",
+                    "6": "6",
+                    "7": "7",
+                    "8": "8",
+                    "9": "9"
+                }
+    },
+    "hyprland/window":{
+        //"format": "{class}, {title}"
+        "format": "{class}"
+    },
+    "hyprland/language":{
+        "format":"{short}"
+    },
+    "mpris":{
+    "format":"{player_icon}{artist} - {title}",
+    "format-paused":"{status_icon}",
+    //"ignored-players":["firefox"],
+    "player-icons": {
+		"default": "▶ ",
+		"mpv": "🎵",
+        "spotify":"󰓇 "
+	    },
+	"status-icons": {
+		"paused": "⏸"
+        }
+    },
+    "tray":{
+        "spacing":10
+    },
+    "cpu":{
+        "format":"  {usage}%"
+    },
+    "memory":{
+        "format":"  {used:0.1f}/{total:0.1f}G"
+    },
+    "group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+        "transition-duration": 100,
+        "children-class": "not-power",
+        "transition-left-to-right": false,
+        "click-to-reveal": true
+        },
+        "modules":["battery","cpu","memory"]
+
+    },
+    "group/power":{
+        "orientation":"inherit",
+        "drawer":{
+            "transition-duration": 100,
+            "children-class": "not-power",
+            "transition-left-to-right": false
+        },
+        "modules":["custom/power","custom/lock","custom/reboot","custom/logout","custom/suspend"]
+    },
+    "custom/power":{
+        "format": "⏻",
+        "on-click": "~/.config/waybar/power.sh shutdown",
+        "toolip":false
+    },
+    "custom/lock":{
+        "format": "",
+        "on-click":"hyprlock",
+        "toolip":false
+    },
+    "custom/reboot":{
+        "format": "",
+        "on-click":"~/.config/waybar/power.sh reboot",
+        "toolip":false
+    },
+    "custom/logout":{
+        "format": "󰍃",
+        "on-click":"hyprctl dispatch exit",
+        "toolip":false
+    },
+    "custom/suspend":{
+        "format": "󰤄",
+        "on-click":"systemctl suspend",
+        "toolip":false
+    },
+    "network": {
+        "format": "",
+        "format-wifi": "{icon}",
+        "format-ethernet": " ",
+        "format-linked": " 󱘖 ",
+        "format-disconnected": " ",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "tooltip-format": "󰅧  {bandwidthUpBytes} 󰅢  {bandwidthDownBytes}"
+    },
+    "pulseaudio":{
+        "format":"{volume}% {icon}",
+        "format-muted":"󰸈",
+        "format-icons":["󰕿","󰖀","󰕾"]
+
+    },
+    "custom/swaync":{
+        "format": "<i>󰏩</i> ",
+        "on-click": "swaync-client -op"
+    },
+    "custom/noscreenshare": {
+        "font-family": "JetBrainsMono Nerd Font, Noto Color Emoji",
+        "exec": "~/.config/scripts/waybar/toggle_noscreenshare.sh",
+        "on-click": "~/.config/scripts/waybar/toggle_noscreenshare.sh toggle && pkill -SIGRTMIN+4 waybar",
+        "signal": 4,
+        "interval": "once",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "off": " 👀",
+            "on": " 🔒"
+        },
+        "tooltip": false
+        },
+    "custom/keyclicks":{
+        "exec": "~/.config/scripts/waybar/mechsim.sh",
+        "interval": 15,
+        "on-click": "~/.config/scripts/waybar/mechsim.sh menu",
+        "on-click-right": "~/.config/scripts/waybar/mechsim.sh toggle",
+        "tooltip": "MechSim keyboard sounds"
+    },
+    "custom/theme": {
+        "exec": "~/.config/themes/get-theme.sh",
+        "interval": 1,
+        "on-click": "exec ~/.config/themes/toggle-theme.sh"
+},
+    "custom/wallpaper":{
+        "format":"🖼️",
+        "on-click": "~/.config/rofi/scripts/wallpaper.sh",
+        "on-click-right" : "~/.config/themes/gen-wallpaper.sh"
+    }
+}

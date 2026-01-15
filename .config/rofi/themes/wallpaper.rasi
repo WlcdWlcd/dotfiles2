@@ -1,0 +1,44 @@
+@import "config.rasi"
+
+configuration {
+  show-icons: true;
+}
+window {
+  width: 40%;
+  max-height: 80%;
+}
+
+listview {
+  columns: 2;
+  lines: 1;
+  spacing: 8px;
+  fixed-height: true;
+  scrollbar: true;
+}
+element {
+  padding: 0px;
+  spacing: 0px;
+  orientation: vertical;
+  children: [element-icon];
+  border-radius: 16px;
+}
+
+element-icon {
+      size: 220px;
+  margin:0px;
+  //border-radius: 12px;
+}
+
+//element {
+//  //padding: 10px;
+//  spacing: 6px;
+//  orientation: vertical;
+//  children: [element-icon, element-text];
+//  border-radius: 12px;
+//}
+//element-text {
+//  horizontal-align: 0.5;
+//  text-align: center;
+//  wrap: true;
+//  font: "JetBrainsMono Nerd Font 10";
+//}

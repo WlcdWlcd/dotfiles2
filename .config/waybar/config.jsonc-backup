@@ -1,0 +1,49 @@
+{
+    "layer": "top",
+    "modules-left": ["custom/logo",
+        "hyprland/workspaces",
+        "hyprland/submap"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray","battery"],
+    "height": 20,
+
+    "hyprland/window": {
+        "max-length": 25
+    },
+    "battery": {
+        "format": "{capacity}% {icon} ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    
+    "custom/logo": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "wofi &"
+    },
+
+    "hyprland/workspaces":{
+        //"workspace-taskbar":{
+        //    "enable":true,
+        //    "format": "{icon} {title:.22}",
+        //    "update-active-window": true
+        //}
+            "on-click": "activate",
+                "format": "{icon}",
+                "format-icons": {
+                    "default": "",
+                    "1": "1",
+                    "2": "2",
+                    "3": "3",
+                    "4": "4",
+                    "5": "5",
+                    "6": "6",
+                    "7": "7",
+                    "8": "8",
+                    "9": "9",
+                }
+    }
+    
+}

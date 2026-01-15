@@ -1,0 +1,126 @@
+require("avante").setup({
+  default_provider = "fast",
+
+  behaviour = {
+    auto_context = false,
+  },
+
+  context = {
+    use_diagnostics = false,
+    use_git_diff = false,
+    use_lsp = false,
+  },
+
+  providers = {
+    
+
+    localprovider = {
+        endpoint = "http://192.168.0.113:6767/v1",
+        extra_request_body = {
+            temperature = 0.2,                                     
+            max_tokens = 128,                                      
+            stop = { "<|assistant|>", "<|user|>", "</s>" },    
+            }
+        },                                                         
+    
+    
+    -- ⚡ ULTRA FAST — phi-2
+    fast = {
+                  __inherited_from = "localprovider",
+      model = "phi-2",
+      system_prompt = [[
+Отвечай кратко и по делу.
+Пиши на русском языке.
+Без лишних объяснений.
+Язык ответа: русский.
+]],
+      
+    },
+
+    -- ⚖️ BALANCED — phi-3
+    mid = {
+    __inherited_from = "localprovider",
+      model = "phi-3-mini-4k-instruct",
+      system_prompt = [[
+Ты опытный разработчик.
+Отвечай кратко и по делу.
+Если меняешь код — минимальные диффы.
+Не трогай лишнее.
+
+Всегда отвечай на русском языке.
+Язык ответа: русский.
+]],
+      extra_request_body = {
+        temperature = 0.2,
+        max_tokens = 256,
+        stop = { "<|assistant|>", "<|user|>", "</s>" },
+      },
+    },
+
+    -- 🧠 SMART — StarCoder2
+    smart = {
+    __inherited_from = "localprovider",
+      model = "qwen2.5-v1-7b",
+      system_prompt = [[
+Ты старший разработчик.
+Работай аккуратно и точно.
+Изменяй только выделенный код.
+Предлагай минимальные диффы.
+Не трогай лишнее.
+
+Всегда отвечай на русском языке.
+Язык ответа: русский.
+]],
+      extra_request_body = {
+        temperature = 0.1,
+        max_tokens = 512,
+        stop = { "<|assistant|>", "<|user|>", "</s>" },
+      },
+    },
+  },
+})
+
+
+local function avante_with(provider, cmd)
+  return function()
+    -- переключаем модель
+    vim.cmd("AvanteSwitchProvider " .. provider)
+    -- вызываем нужную команду
+    vim.cmd(cmd)
+  end
+end
+
+
+
+vim.keymap.set("v", "<leader>afx", avante_with("fast",  "AvanteAsk"), { desc = "Fast explain" })
+vim.keymap.set("v", "<leader>amx", avante_with("mid",   "AvanteAsk"), { desc = "Mid explain" })
+vim.keymap.set("v", "<leader>asx", avante_with("smart", "AvanteAsk"), { desc = "Smart explain" })
+
+vim.keymap.set("n", "<leader>afc", avante_with("fast",  "AvanteChat"), { desc = "Fast chat" })
+vim.keymap.set("n", "<leader>amc", avante_with("mid",   "AvanteChat"), { desc = "Mid chat" })
+vim.keymap.set("n", "<leader>asc", avante_with("smart", "AvanteChat"), { desc = "Smart chat" })
+
+vim.keymap.set("v", "<leader>afe", avante_with("fast",  "AvanteEdit"), { desc = "Fast edit" })
+vim.keymap.set("v", "<leader>ame", avante_with("mid",   "AvanteEdit"), { desc = "Mid edit" })
+vim.keymap.set("v", "<leader>ase", avante_with("smart", "AvanteEdit"), { desc = "Smart edit" })
+
+vim.keymap.set("v", "<leader>afr", avante_with("fast",  "AvanteRefactor"), { desc = "Fast refactor" })
+vim.keymap.set("v", "<leader>amr", avante_with("mid",   "AvanteRefactor"), { desc = "Mid refactor" })
+vim.keymap.set("v", "<leader>asr", avante_with("smart", "AvanteRefactor"), { desc = "Smart refactor" })
+
+
+vim.keymap.set("n", "<leader>as", function()
+  vim.cmd("AvanteStop")
+end, { desc = "Stop AI generation" })
+
+vim.keymap.set("n", "<leader>ac", function()
+  vim.cmd("AvanteClear")
+end, { desc = "clear AI generation" })
+
+vim.keymap.set("n", "<leader>at", function()
+  vim.cmd("AvanteToggle")
+end, { desc = "toggle avante" })
+
+
+-- Undo AI change
+vim.keymap.set("n", "<leader>au", "u", { desc = "Undo AI change" })

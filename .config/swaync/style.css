@@ -1,0 +1,26 @@
+@import 'matugen/colors.css';
+
+@import 'themes/nova-dark/notifications.css';
+@import 'themes/nova-dark/central_control.css';
+
+* {
+  all: unset;
+  font-size: 13px;
+  font-family: "JetBrains Mono";
+  transition: 200ms;
+}
+
+
+.control-center {
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #000000;
+  border-radius: 12.6px;
+  margin: 18px;
+
+  background-color: @blur_background8;
+  color: #cdd6f4;
+  padding: 14px;
+}
+
+.floating-notifications.background .notification-row .notification-background {
+  background-color: @blur_background8; /* ИЛИ rgba */
+}

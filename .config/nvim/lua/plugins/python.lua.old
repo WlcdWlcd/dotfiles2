@@ -1,0 +1,17 @@
+-- Установка LSP-серверов для Python
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "pyright", "ruff_lsp" },  # Ruff вместо flake8/pylint
+})
+
+-- Настройка LSP
+require("lspconfig").pyright.setup({})
+require("lspconfig").ruff_lsp.setup({})
+
+-- Автоформатирование при сохранении
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.py",
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})

@@ -1,0 +1,169 @@
+@import url("waybar-colors.css");
+
+* {
+    font-size: 15px;
+    min-height:0;
+    font-family: JetBarins,Roboto, Helvetica, Arial, sans-serif;
+    min-height: 24px;
+    /* background-color: rgba(0,0,0,0) */
+    padding: 0.0rem;
+}
+
+window#waybar{
+    background: @background;
+    color: @on_background;
+    /*border-bottom: 0px solid rgba(100, 114, 125, 0.5);*/
+    font-family: inherit;
+
+}
+
+tooltip {
+    background: @theme_unfocused_bg_color;
+}
+tooltip label{
+    color: @theme_unfocused_text_color;
+}
+
+
+#workspaces button.active{
+    background-color: @primary;
+    color: @on_primary;
+}
+
+#workspaces button.urgent {
+  background-color: @success_color;
+}
+
+#custom-wallpaper,
+#custom-theme,
+#custom-noscreenshare,
+#custom-swaync,
+#pulseaudio,
+#custom-lock,
+#custom-suspend,
+#custom-power,
+#custom-logout,
+#custom-reboot,
+#window,
+#workspaces button,
+#submap,
+#clock,
+#tray,
+#cpu,
+#mpris,
+#language,
+#memory,
+#network,
+#battery{
+    all: unset;
+    padding: 0px 10px;
+    border-radius: 15px;
+    background: @surface_container;
+    color: @on_surface;
+    margin: 3px 3px;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+#custom-theme:hover,
+#custom-noscreenshare:hover,
+#custom-wallpaper:hover,
+#custom-swaync:hover,
+#custom-lock:hover,
+#custom-suspend:hover,
+#custom-power:hover,
+#custom-logout:hover,
+#custom-reboot:hover,
+#workspaces button:hover,
+#clock:hover,
+#tray:hover,
+#mpris:hover,
+#battery:hover{
+    background: @primary_container;
+    color: @on_secondary_container;
+}
+
+#custom-logo:hover{
+    color:@primary;
+}
+
+#mpris.spotify{
+    color:green;
+}
+
+/*
+#tray .tray-icon{
+    margin-left:10px;
+    margin-right:10px;
+}
+*/
+
+window#waybar.empty #window {
+    background-color: transparent;
+    transition: none;
+}
+#workspaces button.active:hover{
+    background:@secondary;
+    color:@on_secondary;
+}
+
+#submap{
+    background-color:@error_color;
+}
+#network{
+    padding-right:15px;
+}
+
+
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+/*
+ {
+  background: #1e1e2e;
+  opacity: 0.7;
+  padding: 0px 10px;
+  margin: 5px 5px 3px 0px;
+  border: 0px solid #181825;
+  border-radius: 10px;
+}
+*/
+#custom-noscreenshare.on {
+  font-size: 18px; 
+  padding-right: 14px;
+background-color: @primary_container;
+}
+
+#custom-noscreenshare.off {
+  font-size: 16px;
+  padding-right: 16px;
+  padding-left: 9px;
+  background-color: @error_container;
+}
+
+#custom-noscreenshare.on:hover{
+  background-color: @primary;
+}
+
+#custom-noscreenshare.off:hover {
+  background-color: @error;
+}
+

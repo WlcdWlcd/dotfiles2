@@ -1,0 +1,183 @@
+# ######## Window rules ########
+
+# Uncomment to apply global transparency to all windows:
+# windowrulev2 = opacity 0.89 override 0.89 override, class:.*
+
+# Disable blur for xwayland context menus
+windowrulev2 = blur:0 ,class:^()$,title:^()$
+# windowrulev2 = noblur, xwayland:1
+
+#no screenshare 
+source = ~/.config/hypr/configs/visual/noscreenshare.conf
+windowrulev2 = float, size 420 700, move 70% 15%, opacity 0.1, title:^(Twitch chat)
+
+# Floating
+windowrulev2 = center, title:^(Open File)(.*)$
+windowrulev2 = float, title:^(Open File)(.*)$
+windowrulev2 = center, title:^(Select a File)(.*)$
+windowrulev2 = float, title:^(Select a File)(.*)$
+windowrulev2 = center, title:^(Choose wallpaper)(.*)$
+windowrulev2 = float, title:^(Choose wallpaper)(.*)$
+windowrulev2 = size 60% 65%, title:^(Choose wallpaper)(.*)$
+windowrulev2 = center, title:^(Open Folder)(.*)$
+windowrulev2 = float, title:^(Open Folder)(.*)$
+windowrulev2 = center, title:^(Save As)(.*)$
+windowrulev2 = float, title:^(Save As)(.*)$
+windowrulev2 = center, title:^(Library)(.*)$
+windowrulev2 = float, title:^(Library)(.*)$
+windowrulev2 = center, title:^(File Upload)(.*)$
+windowrulev2 = float, title:^(File Upload)(.*)$
+windowrulev2 = center, title:^(.*)(wants to save)$
+windowrulev2 = float, title:^(.*)(wants to save)$
+windowrulev2 = center, title:^(.*)(wants to open)$
+windowrulev2 = float, title:^(.*)(wants to open)$
+windowrulev2 = float, class:^(blueberry\.py)$
+windowrulev2 = float, class:^(guifetch)$   # FlafyDev/guifetch
+windowrulev2 = float, class:^(pavucontrol)$
+windowrulev2 = size 45%, class:^(pavucontrol)$
+windowrulev2 = center, class:^(pavucontrol)$
+windowrulev2 = float, class:^(org.pulseaudio.pavucontrol)$
+windowrulev2 = size 45%, class:^(org.pulseaudio.pavucontrol)$
+windowrulev2 = center, class:^(org.pulseaudio.pavucontrol)$
+windowrulev2 = float, class:^(nm-connection-editor)$
+windowrulev2 = size 45%, class:^(nm-connection-editor)$
+windowrulev2 = center, class:^(nm-connection-editor)$
+windowrulev2 = float, class:.*plasmawindowed.*
+windowrulev2 = float, class:kcm_.*
+windowrulev2 = float, class:.*bluedevilwizard
+windowrulev2 = float, title:.*Welcome
+windowrulev2 = float, title:^(illogical-impulse Settings)$
+windowrulev2 = float, title:.*Shell conflicts.*
+windowrulev2 = float, class:org.freedesktop.impl.portal.desktop.kde
+windowrulev2 = size 60% 65%, class:org.freedesktop.impl.portal.desktop.kde
+windowrulev2 = float, class:^(Zotero)$
+windowrulev2 = size 45%, class:^(Zotero)$
+
+# Move
+# kde-material-you-colors spawns a window when changing dark/light theme. This is to make sure it doesn't interfere at all.
+windowrulev2 = float, class:^(plasma-changeicons)$
+windowrulev2 = noinitialfocus, class:^(plasma-changeicons)$
+windowrulev2 = move 999999 999999, class:^(plasma-changeicons)$
+# stupid dolphin copy
+windowrulev2 = move 40 80, title:^(Copying — Dolphin)$
+
+# Tiling
+windowrulev2 = tile, class:^dev\.warp\.Warp$
+
+# Picture-in-Picture
+windowrulev2 = float, title:^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$
+windowrulev2 = keepaspectratio, title:^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$
+windowrulev2 = move 73% 72%, title:^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$ 
+windowrulev2 = size 25%, title:^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$
+windowrulev2 = float, title:^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$
+windowrulev2 = pin, title:^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$
+
+# --- Tearing ---
+windowrulev2 = immediate, title:.*\.exe
+windowrulev2 = immediate, title:.*minecraft.*
+windowrulev2 = immediate, class:^(steam_app).*
+
+# No shadow for tiled windows (matches windows that are not floating).
+windowrulev2 = noshadow, floating:0
+
+# ######## Workspace rules ########
+workspace = special:special, gapsout:30
+
+# ######## Layer rules ########
+#layerrule = xray 1, .*
+# layerrule = no_anim on, .*
+layerrule = no_anim on, match:class walker
+layerrule = no_anim on, match:class selection
+layerrule = no_anim on,match:class overview
+layerrule = no_anim on,match:class anyrun
+layerrule = no_anim on,match:class indicator.*
+layerrule = no_anim on,match:class osk
+layerrule = no_anim on,match:class hyprpicker
+
+layerrule = no_anim on, match:class noanim
+layerrule = blur on, match:class gtk-layer-shell
+layerrule = ignore_alpha 0 ,match:class gtk-layer-shell
+layerrule = blur on, match:class launcher
+layerrule = ignore_alpha 0.5, match:class launcher
+#layerrule = blur, ^(notif) 
+#layerrule = ignorealpha 0.69, ^(notif) 
+layerrule = blur on, match:class logout_dialog # wlogout
+layerrule = blur_popups on,match:namespace swaync-notfication-window
+layerrule = blur_popups on,match:namespace ^(swaync-control-center)
+#layerrule = xray off,swaync-notfication-window
+
+
+#layerrule = xray off, match:class ^(swaync-notification-window)
+#layerrule = xray off, match:class ^(swaync-control-center)
+#
+#layerrule = blur on, match:namespace ^(swaync-control-center)
+#layerrule = blur on, match:namespace ^(swaync-notification-window)
+
+layerrule = blur on, match:namespace swaync-control-center
+layerrule = xray off, match:namespace swaync-control-center
+
+layerrule = blur on, match:namespace swaync-notification-window
+layerrule = xray off, match:namespace swaync-notification-window
+
+
+
+#layerrule = ignorezero on, match:class swaync-control-center
+#layerrule = ignorezero on, match:class swaync-notification-window
+#
+#layerrule = ignore_alpha 0.5, match:namespace ^(swaync-control-center)
+#layerrule = ignore_alpha 0.2, match:namespace ^(swaync-notification-window)
+
+
+# ags
+layerrule = animation slide left,match:class sideleft.*
+layerrule = animation slide right,match:class sideright.*
+layerrule = blur on,match:class session[0-9]*
+layerrule = blur on,match:class bar[0-9]*
+layerrule = ignore_alpha 0.6,match:class bar[0-9]*
+layerrule = blur on,match:class barcorner.*
+layerrule = ignore_alpha 0.6,match:class barcorner.*
+layerrule = blur on,match:class dock[0-9]*
+layerrule = ignore_alpha 0.6,match:class dock[0-9]*
+layerrule = blur on, match:class indicator.*
+layerrule = ignore_alpha 0.6,match:class indicator.*
+layerrule = blur on, match:class overview[0-9]*
+layerrule = ignore_alpha 0.6, match:class overview[0-9]*
+layerrule = blur on,match:class cheatsheet[0-9]*
+layerrule = ignore_alpha 0.6, match:class cheatsheet[0-9]*
+layerrule = blur on,match:class sideright[0-9]*
+layerrule = ignore_alpha 0.6,match:class sideright[0-9]*
+layerrule = blur on,match:class sideleft[0-9]*
+layerrule = ignore_alpha 0.6,match:class sideleft[0-9]*
+layerrule = blur on,match:class indicator.*
+layerrule = ignore_alpha 0.6,match:class indicator.*
+layerrule = blur on,match:class osk[0-9]*
+layerrule = ignore_alpha 0.6,match:class osk[0-9]*
+
+# Quickshell
+#layerrule = blur_popups on,match:class quickshell:.*
+#layerrule = blur on,match:class quickshell:.*
+#layerrule = ignore_alpha 0.79,match:class quickshell:.*
+#layerrule = animation slide,match:class quickshell:bar
+#layerrule = animation slide bottom,match:class quickshell:cheatsheet
+#layerrule = no_anim on,match:class quickshell:crosshair
+#layerrule = animation slide bottom,match:class quickshell:dock
+#layerrule = animation popin 120%,match:class quickshell:screenCorners
+#layerrule = no_anim on,match:class quickshell:lockWindowPusher
+#layerrule = animation fade,match:class quickshell:notificationPopup
+#layerrule = no_anim on,match:class quickshell:overview
+#layerrule = animation slide bottom,match:class quickshell:osk
+#layerrule = no_anim on,match:class quickshell:screenshot
+#layerrule = blur on,match:class quickshell:session
+#layerrule = no_anim on,match:class quickshell:session
+#layerrule = ignore_alpha 0,match:class quickshell:session
+#layerrule = animation slide right,match:class quickshell:sidebarRight
+#layerrule = animation slide left,match:class quickshell:sidebarLeft
+#layerrule = animation slide,match:class quickshell:verticalBar)
+#layerrule = animation slide top,match:class quickshell:wallpaperSelector
+
+# Launchers need to be FAST
+layerrule = no_anim on,match:class gtk4-layer-shell
+
+#windowrulev2 = blur on, class:^(alacritty)$
+#windowrulev2 = blur on, class:^(waybar)$
+
