@@ -1,0 +1,76 @@
+[config]
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hypr-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/waybar/waybar-colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.pywalfox]
+input_path = '~/.config/matugen/templates/pywal-colors.json'
+output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox $(echo {{mode}} | tr "[:upper:]" "[:lower:]"); pywalfox update'
+
+[templates.wofi]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/wofi/colors.css'
+
+#[templates.mako]
+#input_path = '~/.config/matugen/templates/mako-colors.sh'
+#output_path = '~/.config/mako/colors.sh'
+#post_hook = "~/.config/mako/genconfig.sh"
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'suf=$([ "{{mode}}" = "Dark" ] && echo "-dark"); gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3$suf"'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/matugen/matugen-colors.rasi'
+
+[templates.swaync]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/swaync/themes/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+
+[templates.alacritty]
+input_path = '~/.config/matugen/templates/alacritty-colors.toml'
+output_path = '~/.config/alacritty/colors.toml'
+
+
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+#[templates.mako]
+#input_path = '~/.config/matugen/templates/mako-colors.sh'
+#output_path = '~/.config/mako/colors.sh'
+
+
+#[templates.qt5ct]
+#input_path = '~/.config/matugen/templates/qt.conf'
+#output_path = '~/.config/qt5ct/colors/matugen.conf'
+#
+#[templates.qt6ct]
+#input_path = '~/.config/matugen/templates/qt.conf'
+#output_path = '~/.config/qt6ct/colors/matugen.conf'
+
+[templates.color-scheme]
+input_path = '~/.config/matugen/templates/matugen.colors'
+output_path = '~/.local/share/color-schemes/Matugen.colors'
+
+[templates.neovim]
+input_path = './templates/gpt2-nvim.lua'
+output_path = '~/.config/nvim/generated.lua'
+post_hook = 'pkill -SIGUSR1 nvim'

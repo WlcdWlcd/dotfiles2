@@ -1,0 +1,7 @@
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (1), removing 8.3MB
+Error in config: 
+Config error in file /home/wlcd/.config/hypr/hyprpaper.conf at line 1: no such file
+[WARN] Monitor eDP-1 does not have a target! A wallpaper will not be created.
+[LOG] hyprpaper socket started at /run/user/1000/hypr/386376400119dd46a767c9f8c8791fd22c7b6e61_1766764839_426161036/.hyprpaper.sock (fd: 5)

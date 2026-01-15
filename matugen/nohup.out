@@ -1,0 +1,14 @@
+[LOG] Welcome to hyprpaper!
+built from commit  ()
+[LOG] Cleaned old hyprpaper preloads (2), removing 16.6MB
+[LOG] Preloaded target /home/wlcd/.config/hypr/src/backgrounds/background.png in 219.45ms -> Pixel size: [3840, 2560]
+[LOG] Preloaded target /home/wlcd/.config/hypr/src/backgrounds/background-old.jpg in 29.73ms -> Pixel size: [3840, 2160]
+[LOG] Buffer created for target /home/wlcd/.config/hypr/src/backgrounds/background-old.jpg, Shared Memory usage: 8.3MB
+[LOG] Buffer created for target /home/wlcd/.config/hypr/src/backgrounds/background.png, Shared Memory usage: 8.3MB
+[LOG] Total SM usage for all buffers: 16.6MB
+[LOG] hyprpaper socket started at /run/user/1000/hypr/386376400119dd46a767c9f8c8791fd22c7b6e61_1766764839_426161036/.hyprpaper.sock (fd: 5)
+[LOG] configure for eDP-1
+[LOG] configure for eDP-1
+[LOG] Image data for eDP-1: /home/wlcd/.config/hypr/src/backgrounds/background-old.jpg at [-0.00, 0.00], scale: 0.50 (original image size: [3840, 2160])
+[LOG] Submitting viewport dest size 1920x1080 for 55776ac22510
+[LOG] handlePreferredScale: 1.00 for 55776ac22510

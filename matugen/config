@@ -1,0 +1,19 @@
+#|||||||||||||||||||||||||||||||||||||||||
+#||| THIS FILE CREATED BY genconfig.sh |||
+#|||      don\'t edit it manually      |||
+#|||||||||||||||||||||||||||||||||||||||||
+
+
+background-color=#1a110f
+border-color=#ffece7
+border-size=1
+border-radius=5
+padding=7
+
+
+[urgency=high]
+border-color=#ffece9
+text-color=#000000
+default-timeout=0
+
+
